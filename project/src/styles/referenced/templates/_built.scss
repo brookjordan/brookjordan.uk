@@ -1,0 +1,224 @@
+
+
+
+.cf:after, .cf:before {
+	content: '';
+	display: table;
+	clear: both;
+}
+.borderShadow {
+	border: $clr-shadow solid;
+	border-width: 1px 2px 3px 2px;
+	border-radius: 2px;
+}
+.containerWidth {
+	width: 80%;
+	min-width: 310px;
+	max-width: 800px;
+	margin: 0 auto;
+
+	@media ( min-width: $mda-big ) {
+		max-width: 1300px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.pageTitle {
+	margin: .8em 0;
+
+	font-size: 2.5em;
+	text-align: center;
+
+	text-shadow: 0 1px 2px $clr-txt-shadow;
+	text-shadow:
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow;
+}
+
+.stages {
+	@extend .cf;
+
+	display: flex;
+	flex-direction: column;
+
+	position: relative;
+	z-index: 0;
+
+	background-color: $clr-paper;
+
+	@extend .borderShadow;
+
+	@extend .containerWidth;
+
+
+	@media ( min-width: $mda-big ) {
+		flex-direction: row;
+	}
+}
+
+.stage {
+	$stagePadding: 6%;
+	$stage-icon-size: 100px;
+
+	position: relative;
+	z-index: 0;
+
+	padding: $stage-icon-size / 3;
+	padding-left: $stage-icon-size * 0.9;
+
+	@media ( min-width: $mda-big ) {
+		float: left;
+
+		width: (100% / 3);
+		padding-left: $stage-icon-size * 1.5;
+	}
+
+	&:after {
+
+		content: '';
+
+		position: absolute;
+		top: 50%;
+		left: -$stage-icon-size/3;
+		margin-top: -$stage-icon-size/2;
+
+		width: $stage-icon-size;
+		height: $stage-icon-size;
+
+		background-size: 100px;
+
+		@media ( min-width: $mda-big ) {
+			left: $stage-icon-size / 4;
+		}
+	}
+
+	&__title {
+		font-size: 1.8em;
+	}
+
+	&__teaser {
+		font-size: 1em;
+		margin-top: .5em;
+
+		/*	change top margin after headings */
+		.stage__title + & {
+			margin-top: 0.2em;
+		}
+		/**/
+	}
+
+	&-design {
+		background: $clr-design-2;
+
+		&:after {
+			background-image: url( "http://brookjordan.uk/beta/i/i-design.png" );
+		}
+	}
+
+	&-build {
+		background: $clr-build-2;
+
+		&:after {
+			background-image: url( "http://brookjordan.uk/beta/i/i-build.png" );
+		}
+	}
+
+	&-setup {
+		background: $clr-setup-2;
+
+		&:after {
+			background-image: url( "http://brookjordan.uk/beta/i/i-setup.png" );
+		}
+	}
+}
+
+
+
+
+.builtSitesContainer {
+	background-color: $clr-paper;
+	margin-top: 50px;
+}
+
+.builtSites {
+	@extend .containerWidth;
+	@extend .cf;
+
+	padding: 40px 0;
+}
+
+.builtSite {
+	position: relative;
+	float: left;
+	height: 250px;
+	-webkit-filter: saturate( .2 ) brightness( .8 );
+
+	transition: -webkit-filter .2s, transform .2s, border .2s;
+	object-fit: cover;
+
+	cursor: pointer;
+
+	&:hover {
+		-webkit-filter: saturate( 1 ) brightness( 1 );
+		transform: scale( 1.05 );
+		@extend .borderShadow;
+		z-index: 1;
+	}
+
+	&-1 {
+		width: 100%;
+	}
+
+	&-2 {
+		width: 100%;
+	}
+
+	&-3 {
+		width: 100%;
+	}
+
+	@media ( min-width: 500px ) {
+		&-1 {
+			width: 100%;
+		}
+
+		&-2 {
+			width: 50%;
+		}
+
+		&-3 {
+			width: 50%;
+		}
+	}
+
+	@media ( min-width: 1000px ) {
+		height: 400px;
+
+		&-1 {
+			width: 50%;
+		}
+
+		&-2 {
+			width: 25%;
+		}
+
+		&-3 {
+			width: 25%;
+		}
+	}
+}

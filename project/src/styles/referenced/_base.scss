@@ -1,0 +1,74 @@
+*{box-sizing:border-box;}
+
+body{
+	padding-top: 30px;
+	padding-bottom: 10%;
+
+	background-color: $clr-body;
+
+	font-family: Baskerville, 'Libre Baskerville', serif;
+	line-height: 1.3;
+	color: $clr-txt-body;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+a, button {
+	text-decoration: none;
+	color: inherit;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Glass Antiqua', cursive;
+	font-family: 'Lancelot', cursive;
+	font-family: 'Henny Penny', cursive;
+	line-height: 1.2;
+}
+
+
+
+
+
+.cf:after, .cf:before {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.borderShadow {
+	border: $clr-shadow solid;
+	border-width: 1px 2px 3px 2px;
+	border-radius: 2px;
+}
+
+.containerWidth {
+	width: 80%;
+	min-width: 310px;
+	max-width: 800px;
+	margin: 0 auto;
+
+	@media ( min-width: $mda-big ) {
+		max-width: 1300px;
+	}
+}
+
+
+
+
+.pageTitle {
+	margin: .8em 0;
+
+	font-size: 2.5em;
+	text-align: center;
+
+	text-shadow: 0 1px 2px $clr-txt-shadow;
+	text-shadow:
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow,
+		0 1px 1px $clr-txt-shadow;
+}
