@@ -1,0 +1,23 @@
+{
+	"sites": [
+
+		{
+			"url": "bingo.betway.com",
+			"href": "images/s-bb.jpg",
+			"alt": "Betway's bingo website."
+		},
+
+		{
+			"url": "bingo.betway.com",
+			"href": "images/s-tv.jpg",
+			"alt": "Tennis TV's website."
+		},
+
+		{
+			"url": "bingo.betway.com",
+			"href": "images/s-bn.jpg",
+			"alt": "Brann's, competitor in the Norwegian premier league, website."
+		}
+
+	]
+}

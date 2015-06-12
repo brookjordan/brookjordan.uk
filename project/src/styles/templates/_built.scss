@@ -1,0 +1,97 @@
+.builtSitesContainer {
+	background-color: $clr-paper;
+	margin-top: 50px;
+
+	@extend .cf;
+}
+
+.builtSites {
+	@extend .containerWidth;
+
+	padding: 40px 0;
+
+	@extend .cf;
+}
+
+.builtSite {
+	position: relative;
+	float: left;
+	height: 250px;
+	filter: saturate( .2 ) brightness( .5 );
+	//box-shadow: inset 0 0 200px black;
+
+	background: black 50% 0 no-repeat;
+	background-size: cover;
+
+	transition: transform .2s, border .2s;
+	object-fit: cover;
+
+	cursor: pointer;
+	user-select: none;
+
+	&--hover,
+	&--hoverdown
+	{
+		//box-shadow: inset 0 0 0 black;
+		filter: saturate( 1 ) brightness( 1 );
+		transform: scale( 1.05 );
+		@extend .borderShadow;
+		z-index: 1;
+	}
+
+	&-1 {
+		width: 100%;
+	}
+
+	&-2 {
+		width: 100%;
+	}
+
+	&-3 {
+		width: 100%;
+	}
+
+	&-4 {
+		width: 100%;
+	}
+
+	@media ( min-width: 500px ) {
+		&-1 {
+			width: 100%;
+		}
+
+		&-2 {
+			width: 100%;
+		}
+
+		&-3 {
+			width: 50%;
+		}
+
+		&-4 {
+			width: 50%;
+		}
+	}
+
+	@media ( min-width: 1000px ) {
+		&-1 {
+			width: 100%;
+		}
+
+		&-2 {
+			width: (100%)/3;
+		}
+
+		&-3 {
+			width: (100%)/3;
+		}
+
+		&-4 {
+			width: (100%)/3;
+		}
+	}
+
+	@media ( min-height: 600px ) {
+		height: 400px;
+	}
+}

@@ -4,14 +4,20 @@
 	<meta charset="UTF-8">
 	<title>Brook Jordan - Web developer</title>
 
-	<link rel="stylesheet" type="text/css" href="/styles/main.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='http://fonts.googleapis.com/css?family=Henny+Penny|Libre+Baskerville' rel='stylesheet' type='text/css'>
+
+	<!-- build:css inline -->
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- /build -->
 </head>
 <body>
 
 
 
-<header class="mainHeadContainer">
-	<div class="mainHead">
+<header class="mainHeadContainer" >
+	<div class="mainHead" >
 
 		<div class="menuToggleContainer">
 			<div class="menuToggle"></div>
@@ -64,15 +70,33 @@
 
 		<h3 class="stage__title">sites I've worked on</h3>
 
-		<img class="builtSite builtSite-1" src="http://brookjordan.uk/beta/i/s-bb.jpg">
-		<img class="builtSite builtSite-2" src="http://brookjordan.uk/beta/i/s-tv.jpg">
-		<img class="builtSite builtSite-3" src="http://brookjordan.uk/beta/i/s-bn.jpg">
+		<div
+			style="background-image: url( './images/s-tv.jpg' )"
+			class="builtSite-1"
+			brk-hoverdown="builtSite" ></div>
+		<div
+			style="background-image: url( './images/s-bb.jpg' )"
+			class="builtSite-2"
+			brk-hoverdown="builtSite" ></div>
+		<div
+			style="background-image: url( './images/s-bn.jpg' )"
+			class="builtSite-3"
+			brk-hoverdown="builtSite" ></div>
+		<div
+			style="background-image: url( './images/s-x1.jpg' )"
+			class="builtSite-4"
+			brk-hoverdown="builtSite" ></div>
 
 
 	</div>
 </div>
 
+<!-- build:js inline -->
+<script src="scripts/BRK.js"></script>
+<script src="scripts/BRK_hoverDown.js"></script>
 
+<script src="scripts/main.js"></script>
+<!-- /build -->
 
 </body>
 </html>

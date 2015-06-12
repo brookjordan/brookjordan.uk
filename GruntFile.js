@@ -5,10 +5,11 @@ module.exports = function(grunt) {
 
 
 	addTask( 'default', [
-			'copy:svgs', 'copy:dump', 'copy:baseHTML',
+			'copy:svgs', 'copy:dump', //'copy:baseHTML',
 
-			'sass:inline', 'autoprefixer:inline',
 			'sass:referenced', 'autoprefixer:referenced',
+
+			'uglify',
 
 			'processhtml', 'relativeRoot', 'htmlmin',
 
@@ -28,15 +29,16 @@ module.exports = function(grunt) {
 		processhtml: {
 
 			options: {
-				includeBase: 'project/temp/templates',
+				includeBase: 'project/temp/includes',
 				recursive: true,
+				process: true,
 			},
 
 			dist: {
 				files: [{
 					expand: true,
 
-					cwd: 'project/src/pages/',
+					cwd: 'project/src/pages',
 					src: '**/*.html',
 					dest: 'project/temp/pages/compiled',
 					ext: '.html',
@@ -67,10 +69,35 @@ module.exports = function(grunt) {
 		//	Minify the HTML
 		htmlmin: {
 			options: {
-				removeComments: true,
-				collapseWhitespace: true,
-				//conservativeCollapse: true,
-				minifyJS: true,
+				removeComments:                true,
+				removeCommentsFromCDATA:       false,
+				removeCDATASectionsFromCDATA:  false,
+				collapseWhitespace:            true,
+				conservativeCollapse:          true,
+				preserveLineBreaks:            false,
+				collapseBooleanAttributes:     false,
+				removeAttributeQuotes:         false,
+				removeRedundantAttributes:     false,
+				preventAttributesEscaping:     false,
+				useShortDoctype:               false,
+				removeEmptyAttributes:         false,
+				removeScriptTypeAttributes:    false,
+				removeStyleLinkTypeAttributes: false,
+				removeOptionalTags:            false,
+				removeIgnored:                 false,
+				removeEmptyElements:           false,
+				lint:                          false,
+				keepClosingSlash:              false,
+				caseSensitive:                 false,
+				minifyJS:                      false,	// (could be true, false, Object (options))
+				minifyCSS:                     false,	// (could be true, false, Object (options))
+				minifyURLs:                    false,	// (could be Object (options))
+				ignoreCustomComments:          [ ],
+				processScripts:                [ ],
+				ustomAttrAssign:               [ ],
+				customAttrSurround:            [ ],
+				//	maxLineLength: ,
+				//	customAttrCollapse:,
 			},
 
 			dev: {
@@ -119,25 +146,14 @@ module.exports = function(grunt) {
 				sourceMapContents: true,
 			},
 
-			inline: {
-				files: [{
-					expand: true,
-
-					cwd: 'project/src/styles/inline',
-					src: '**/*.scss',
-					dest: 'project/temp/styles/inline/compiled',
-					ext: '.min.css',
-				}],
-			},
-
 			referenced: {
 				files: [{
 					expand: true,
 
-					cwd: 'project/src/styles/referenced',
+					cwd: 'project/src/styles',
 					src: '**/*.scss',
-					dest: 'project/temp/styles/referenced/compiled',
-					ext: '.min.css',
+					dest: 'project/temp/styles/compiled',
+					ext: '.css',
 				}],
 			},
 		},
@@ -151,25 +167,28 @@ module.exports = function(grunt) {
 				map: true
 			},
 
-			inline: {
-				files: [{
-					expand: true,
-
-					cwd: 'project/temp/styles/inline/compiled',
-					src: '**/*.css',
-					dest: 'project/temp/templates/styles',
-					ext: '.min.css',
-				}],
-			},
-
 			referenced: {
 				files: [{
 					expand: true,
 
-					cwd: 'project/temp/styles/referenced/compiled',
+					cwd: 'project/temp/styles/compiled',
 					src: '**/*.css',
-					dest: 'project/build/styles',
-					ext: '.min.css',
+					dest: 'project/temp/includes/styles',
+					ext: '.css',
+				}],
+			},
+		},
+
+
+
+		uglify: {
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'project/src/scripts',
+					src: '**/*.js',
+					dest: 'project/temp/includes/scripts',
+					ext: '.js',
 				}],
 			},
 		},
@@ -228,19 +247,25 @@ module.exports = function(grunt) {
 				spawn: false,
 			},
 
-			docsAndScripts: {
+			html: {
 				files: [ 'project/src/pages/**/*.html' ],
 				tasks: [ 'processhtml', 'relativeRoot', 'htmlmin', ]
 			},
 
-			styles__inline: {
-				files: [ 'project/src/styles/inline/**/*.scss' ],
-				tasks: [ 'sass:inline', 'autoprefixer:inline', 'processhtml', 'relativeRoot', 'htmlmin', ]
+			styles: {
+				files: [ 'project/src/styles/**/*.scss' ],
+				tasks: [
+					'sass:referenced', 'autoprefixer:referenced',
+					'processhtml', 'relativeRoot', 'htmlmin',
+				]
 			},
 
-			styles__referenced: {
-				files: [ 'project/src/styles/referenced/**/*.scss' ],
-				tasks: [ 'sass:referenced', 'autoprefixer:referenced', ]
+			scripts: {
+				files: [ 'project/src/scripts/**/*.js' ],
+				tasks: [
+					'uglify',
+					'processhtml', 'relativeRoot', 'htmlmin',
+				]
 			},
 
 			images: {
