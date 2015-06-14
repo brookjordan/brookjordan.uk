@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 					src: '**/*.html',
 					dest: 'project/temp/pages/compiled',
 					ext: '.html',
-				}],
+				},],
 			},
 
 		},
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
 					cwd:  'project/temp/pages/compiled',
 					src: [ '**/*.html' ],
 					dest: 'project/temp/pages/relativeRoot'
-				}],
+				},],
 			},
 		},
 
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
 					src: '**/*.html',
 					dest: 'project/build',
 					ext: '.html',
-				}],
+				},],
 			},
 		},
 
@@ -116,13 +116,16 @@ module.exports = function(grunt) {
 
 		//	Minify the images
 		imagemin: {
+			options: {
+				progressive: true,
+			},
 			dist: {
 				files: [{
 					expand: true,
 					cwd: 'project/src/images/',
 					src: ['**/*.{png,jpg,gif}'],
-					dest: 'project/build/images'
-				}],
+					dest: 'project/build/images',
+				},],
 			},
 		},
 
@@ -154,7 +157,7 @@ module.exports = function(grunt) {
 					src: '**/*.scss',
 					dest: 'project/temp/styles/compiled',
 					ext: '.css',
-				}],
+				},],
 			},
 		},
 
@@ -175,7 +178,7 @@ module.exports = function(grunt) {
 					src: '**/*.css',
 					dest: 'project/temp/includes/styles',
 					ext: '.css',
-				}],
+				},],
 			},
 		},
 
@@ -189,7 +192,7 @@ module.exports = function(grunt) {
 					src: '**/*.js',
 					dest: 'project/temp/includes/scripts',
 					ext: '.js',
-				}],
+				},],
 			},
 		},
 
