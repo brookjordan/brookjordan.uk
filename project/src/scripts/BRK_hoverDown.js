@@ -166,6 +166,7 @@ function nonTouchHoverDown ( elt ) {
 	}
 
 	function addDown ( e ) {
+		console.log( e );
 
 		elt.removeEventListener( 'mousedown', addDown, false );
 

@@ -1,0 +1,38 @@
+.imageViewer {
+	display:          none;
+
+	position:         fixed;
+	top:              0;
+	left:             0;
+	bottom:           0;
+	right:            0;
+	z-index:          900000000;
+
+	width:            100%;
+	height:           100%;
+
+	background-color: $clr-body;
+	opacity:          0;
+	cursor:     pointer;
+}
+
+.imageViewerImageContainer {
+	display:    none;
+
+	position:   fixed;
+	z-index:    9000000000;
+
+	text-align: center;
+	overflow:   auto;
+	cursor:     pointer;
+
+	transition-timing-function: ease-in-out;
+}
+
+.imageViewerImage {
+	display:   inline-block;
+
+	max-width: 1000px;
+	width: 100%;
+	height:    auto;
+}
