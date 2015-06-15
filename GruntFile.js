@@ -117,8 +117,11 @@ module.exports = function(grunt) {
 		//	Minify the images
 		imagemin: {
 			options: {
-				progressive: true,
+				progressive: true,		//	jpeg
+				optimizationLevel: 4,	//	png: 0 - 7
+				interlaced: true,		//	gif
 			},
+
 			dist: {
 				files: [{
 					expand: true,
