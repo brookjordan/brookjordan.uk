@@ -1,4 +1,5 @@
 $main-head-height: 46px;
+
 .mainHeadContainer {
 	position: fixed;
 	z-index: 100;
@@ -11,16 +12,23 @@ $main-head-height: 46px;
 		transparentize( $clr-body, 1 ),
 		transparentize( $clr-body, .1 ) 5px
 	);
+
+	transition: top .2s ease-in;
+
+	&--hidden {
+		top: -100px;
+
+		transition: top .2s ease-out;
+	}
 }
 .mainHead {
-	@extend .cf;
-
 	position: relative;
 	height: $main-head-height + 5px;
 
 	margin: 0 auto;
 
-	@extend .containerWidth;
+	@extend .cf;
+	//@extend .containerWidth;
 }
 .menuToggleContainer {
 	float: right;
@@ -79,8 +87,6 @@ $main-head-height: 46px;
 }
 
 .headMenu {
-	@extend .cf;
-
 	position: absolute;
 	top: 0;
 	right: -200px;
@@ -100,6 +106,8 @@ $main-head-height: 46px;
 
 	pointer-events: none;
 
+	@extend .cf;
+
 	&__item {
 		display: inline-block;
 
@@ -108,6 +116,11 @@ $main-head-height: 46px;
 
 		line-height: 46px;
 		padding: 0 10px;
+
+		img {
+			height: 46px;
+    		vertical-align: top;
+		}
 
 		&:after {
 			content: '';
@@ -126,14 +139,21 @@ $main-head-height: 46px;
 			transition-duration: .2s;
 		}
 
-		&:hover {
-			text-decoration: none;
+		.NO-touch & {
+			&:hover {
 
-			&:after {
-				left: 0;
+				text-decoration: none;
 
-				width: 100%;
+				&:after {
+					left: 0;
+
+					width: 100%;
+				}
 			}
+		}
+
+		.HAS-touch & {
+			background-color: $clr-body;
 		}
 	}
 
@@ -145,5 +165,21 @@ $main-head-height: 46px;
 		transition: right .2s ease-out, opacity .2s ease-out;
 
 		pointer-events: auto;
+	}
+}
+
+.headLogo {
+	float: left;
+
+	height: 65px;
+	width: auto;
+	margin: 5px;
+
+	transition-property: height, margin;
+	transition-duration: .2s;
+
+	&--fit {
+		height: 38px;
+		margin: 3px;
 	}
 }

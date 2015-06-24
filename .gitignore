@@ -61,3 +61,14 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+
+#
+
+.tmp
+project/prod
+project/dev
+project/dev-temp
+
+image src

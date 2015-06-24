@@ -8,9 +8,9 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Henny+Penny|Libre+Baskerville' rel='stylesheet' type='text/css'>
 
-	<!-- build:css inline -->
+	<!-- build:css styles/main.5.css -->
 	<link rel="stylesheet" href="styles/main.css">
-	<!-- /build -->
+	<!-- endbuild -->
 </head>
 <body>
 
@@ -24,12 +24,34 @@
 		</div>
 
 		<div class="headMenu">
-			<a href="#" class="headMenu__item">contact</a>
-			<a href="https://www.github.com/brookjordan" class="headMenu__item">github</a>
-			<a href="#" class="headMenu__item">design</a>
-			<a href="#" class="headMenu__item">build</a>
-			<a href="#" class="headMenu__item">setup</a>
+			<a href="http://www.brookjordan.uk/cv/"
+			   class="headMenu__item"
+			   title="CV">
+				<img src="images/i-cv.png"  alt="My CV.">
+			</a>
+			<a href="https://www.linkedin.com/profile/view?id=124472595"
+			   class="headMenu__item"
+			   title="Linked In">
+				<img src="images/i-linkedin.png"  alt="My linked in account.">
+			</a>
+			<a href="https://www.github.com/brookjordan"
+			   class="headMenu__item"
+			   title="GitHub">
+				<img src="images/i-github.png"  alt="My GitHub page.">
+			</a>
+			<a href="mailto:brkjrdn@gmail.com"
+			   class="headMenu__item"
+			   title="Email me.">
+				<img src="images/i-email.png"  alt="Email me.">
+			</a>
+			<a href="tel://+6592403724"
+			   class="headMenu__item"
+			   title="Call me">
+				<img src="images/i-phone.png"  alt="Call me.">
+			</a>
 		</div>
+
+		<img src="images/l-bj.png" alt="Brook Jordan" class="headLogo">
 
 	</div>
 </header>
@@ -70,38 +92,74 @@
 	<div class="builtSites">
 
 		<h3 class="stage__title">sites I've worked on</h3>
+		<p>Click on thumbnails for a full snap-shot.*</p>
 
 		<div
-			style="background-image: url( './images/s-tv.jpg' )"
-			class="builtSite builtSite-1"
-			brk-hoverdown="builtSite" ></div>
+			style="background-image: url( './images/s-tv-sml.jpg' )"
+			class="builtSite builtSite-1">
+			<div class="builtSite__info">
+				<p class="builtSite__info__copy">Tennis TV - vod and live streaming</p>
+				<a class="builtSite__info__copy builtSite__info__link"
+				   href="http://www.tennistv.com/"
+				   target="_blank">live site ></a>
+			</div>
+		</div>
 		<div
-			style="background-image: url( './images/s-bb.jpg' )"
-			class="builtSite builtSite-2"
-			brk-hoverdown="builtSite" ></div>
+			style="background-image: url( './images/s-bb-sml.jpg' )"
+			class="builtSite builtSite-2">
+			<div class="builtSite__info">
+				<p class="builtSite__info__copy">Betway Bingo - games lobby</p>
+				<a class="builtSite__info__copy builtSite__info__link"
+				   href="https://bingo.betway.com/"
+				   target="_blank">live site ></a>
+			</div>
+		</div>
 		<div
-			style="background-image: url( './images/s-bn.jpg' )"
-			class="builtSite builtSite-3"
-			brk-hoverdown="builtSite" ></div>
+			style="background-image: url( './images/s-bn-sml.jpg' )"
+			class="builtSite builtSite-3">
+			<div class="builtSite__info">
+				<p class="builtSite__info__copy">Brann football club - Norwegian football statistics and news</p>
+				<a class="builtSite__info__copy builtSite__info__link"
+				   href="http://www.brann.no/"
+				   target="_blank">live site ></a>
+			</div>
+		</div>
 		<div
-			style="background-image: url( './images/s-x1.jpg' )"
-			class="builtSite builtSite-4"
-			brk-hoverdown="builtSite" ></div>
+			style="background-image: url( './images/s-x1-sml.jpg' )"
+			class="builtSite builtSite-4">
+			<div class="builtSite__info">
+				<p class="builtSite__info__copy">X1 ltd. - marketing and printing</p>
+				<a class="builtSite__info__copy builtSite__info__link"
+				   href="http://www.x1.ltd.uk/"
+				   target="_blank">live site ></a>
+			</div>
+		</div>
 
+		<div class="builtSitesSafetyText">
+			<p>*Although I try my best to keep all information up-to-date I do not control many of these sites anymore. As such leaving my site is at your own risk - plus the websites may have changed since I worked on them.</p>
+			<p>I provide screenshots of each site for this reason. This does, however, lose the responsive nature of the websites.</p>
+		</div>
 
 	</div>
+
+
 </div>
 
-<!--
-<script src="scripts/BRK.js"></script>
-<script src="scripts/BRK_hoverDown.js"></script>
--->
 
-<!-- build:js inline -->
-<script src="scripts/main.js"></script>
 
-<script src="scripts/BRK_viewer.js"></script>
-<!-- /build -->
+<!-- build:js scripts/main.5.js -->
+	<!-- Compatibility classes -->
+	<script src="scripts/compatibilityClasses/touch.js"></script>
+
+	<!-- Plugins -->
+	<script src="scripts/BRK_viewer.js"></script>
+	<script src="scripts/enhanceImages.js"></script>
+
+	<!-- Header bits -->
+	<script src="scripts/header/headerLogoResize.js"></script>
+	<script src="scripts/header/hideHeader.js"></script>
+	<script src="scripts/header/topMenuToggle.js"></script>
+<!-- endbuild -->
 
 </body>
 </html>

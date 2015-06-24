@@ -4,16 +4,37 @@ module.exports = function(grunt) {
 
 
 
-	addTask( 'default', [
-			'copy:svgs', 'copy:dump', //'copy:baseHTML',
+	addTask( 'dev', [
+			'copy:svgs', 'copy:devDump',
 
-			'sass:referenced', 'autoprefixer:referenced',
+			'sass:dev', 'autoprefixer:dev',
 
-			'uglify',
+			'copy:devJS',
 
-			'processhtml', 'relativeRoot', 'htmlmin',
+			'relativeRoot',
 
 			'newer:imagemin',
+		]);
+
+	addTask( 'prod', [
+			'copy:prodImages', 'copy:prodDump',
+
+			'processhtml',
+
+			'useminPrepare',
+			'concat:generated', 'cssmin:generated', 'uglify:generated',
+			'usemin',
+
+			'htmlmin:prod',
+		]);
+
+	addTask('build', [
+			'clean:created',
+			'dev', 'prod',
+		]);
+
+	addTask( 'default', [
+			'dev',
 			'watch',
 		]);
 
@@ -29,18 +50,18 @@ module.exports = function(grunt) {
 		processhtml: {
 
 			options: {
-				includeBase: 'project/temp/includes',
 				recursive: true,
 				process: true,
+				commentMarker: 'process',
 			},
 
-			dist: {
+			prod: {
 				files: [{
 					expand: true,
 
-					cwd: 'project/src/pages',
+					cwd: 'project/dev',
 					src: '**/*.html',
-					dest: 'project/temp/pages/compiled',
+					dest: 'project/prod',
 					ext: '.html',
 				},],
 			},
@@ -49,20 +70,70 @@ module.exports = function(grunt) {
 
 
 
+
+
+		useminPrepare: {
+			html: 'project/dev/index.html',
+
+			options: {
+				dest: 'project/prod',
+			},
+		},
+
+
+
+
+
+		usemin: {
+			html: 'project/prod/index.html',
+		},
+
+
+
+
+
+
+
 		//	Change root URLs to be relative URLs
 		relativeRoot: {
 			yourTarget: {
 				options: {
-					root: 'project/temp/pages/compiled'
+					root: 'project/src/pages'
 				},
+
 				files: [{
 					expand: true,
-					cwd:  'project/temp/pages/compiled',
+					cwd:  'project/src/pages',
 					src: [ '**/*.html' ],
-					dest: 'project/temp/pages/relativeRoot'
+					dest: 'project/dev'
 				},],
 			},
 		},
+
+
+
+
+
+
+
+		css_url_relative: {
+			styles: {
+				options: {
+					staticRoot: 'project',
+				},
+
+				files: [{
+					expand: true,
+					cwd:  'project/dev/styles',
+					src: [ '**/*.css' ],
+					dest: 'project/dev/styles_rel'
+				},],
+			},
+		},
+
+
+
+
 
 
 
@@ -89,8 +160,8 @@ module.exports = function(grunt) {
 				lint:                          false,
 				keepClosingSlash:              false,
 				caseSensitive:                 false,
-				minifyJS:                      false,	// (could be true, false, Object (options))
-				minifyCSS:                     false,	// (could be true, false, Object (options))
+				minifyJS:                      true,	// (could be true, false, Object (options))
+				minifyCSS:                     true,	// (could be true, false, Object (options))
 				minifyURLs:                    false,	// (could be Object (options))
 				ignoreCustomComments:          [ ],
 				processScripts:                [ ],
@@ -100,13 +171,13 @@ module.exports = function(grunt) {
 				//	customAttrCollapse:,
 			},
 
-			dev: {
+			prod: {
 				files: [{
 					expand: true,
 
-					cwd: 'project/temp/pages/relativeRoot',
+					cwd: 'project/prod',
 					src: '**/*.html',
-					dest: 'project/build',
+					dest: 'project/prod',
 					ext: '.html',
 				},],
 			},
@@ -114,55 +185,64 @@ module.exports = function(grunt) {
 
 
 
+
+
+
+
 		//	Minify the images
 		imagemin: {
 			options: {
-				progressive: true,		//	jpeg
-				optimizationLevel: 4,	//	png: 0 - 7
-				interlaced: true,		//	gif
+				progressive: true,
 			},
-
 			dist: {
 				files: [{
 					expand: true,
 					cwd: 'project/src/images/',
 					src: ['**/*.{png,jpg,gif}'],
-					dest: 'project/build/images',
+					dest: 'project/dev/images',
 				},],
 			},
 		},
+
+
+
+
 
 
 
 		//	Render the css
 		sass: {
 			options: {
-				//file: 'null',
-				//data: 'null',
-				//importer: 'undefined',
-				//includePaths: '[]',
-				//indentedSyntax: 'false',
-				//omitSourceMapUrl: 'false',
-				//outFile: 'null',
-				outputStyle: 'compressed', //'nested'
-				//precision: '5',
-				//sourceComments: 'false',
+				//file: null,
+				//data: null,
+				//importer: undefined,
+				//includePaths: [],
+				//indentedSyntax: false,
+				//omitSourceMapUrl: false,
+				//outFile: null,
+				outputStyle: 'nested', //compressed
+				precision: 5,
+				//sourceComments: false,
 				sourceMap: true,
-				//sourceMapEmbed: 'false',
+				//sourceMapEmbed: false,
 				sourceMapContents: true,
 			},
 
-			referenced: {
+			dev: {
 				files: [{
 					expand: true,
 
 					cwd: 'project/src/styles',
 					src: '**/*.scss',
-					dest: 'project/temp/styles/compiled',
+					dest: 'project/dev-temp/styles/compiled',
 					ext: '.css',
 				},],
 			},
 		},
+
+
+
+
 
 
 
@@ -173,13 +253,13 @@ module.exports = function(grunt) {
 				map: true
 			},
 
-			referenced: {
+			dev: {
 				files: [{
 					expand: true,
 
-					cwd: 'project/temp/styles/compiled',
+					cwd: 'project/dev-temp/styles/compiled',
 					src: '**/*.css',
-					dest: 'project/temp/includes/styles',
+					dest: 'project/dev/styles',
 					ext: '.css',
 				},],
 			},
@@ -187,47 +267,130 @@ module.exports = function(grunt) {
 
 
 
+
+
+
+
 		uglify: {
-			dist: {
+			options: {
+				sourceMap: true,
+				sourceMapIncludeSources: true,
+			},
+
+			dev: {
 				files: [{
 					expand: true,
 					cwd: 'project/src/scripts',
 					src: '**/*.js',
-					dest: 'project/temp/includes/scripts',
+					dest: 'project/dev/scripts',
 					ext: '.js',
 				},],
 			},
+
+			generated: {},
 		},
+
+
+
+
+
+
+
+		cssmin: {
+			options: {
+				sourceMap: true,
+			},
+
+			generated: {},
+		},
+
+
+
+
+
+
+
+		concat: {
+			options: {
+				sourceMap: true,
+				sourceMapStyle: 'embed',
+			},
+
+			generated: {},
+		},
+
+
+
+
 
 
 
 		//	Start fresh
 		clean: {
-			dump: [ "project/temp/", "project/build/", ],
+			dump: [ "project/dev-temp/", "project/dev/", ],
+
+			created: [ "project/dev-temp/", "project/dev/", "project/prod/", ],
 		},
+
+
+
+
 
 
 
 		//	Copy files that aren't processed
 		copy: {
-			baseHTML: {
+			prodHTML: {
 				files: [
 					{
 						expand: true,
-						cwd: 'project/src/pages/',
-						src: ['**/*.*'],
-						dest: 'project/temp/pages/base',
+						cwd: 'project/dev',
+						src: ['**/*.html'],
+						dest: 'project/prod',
 					},
 				],
 			},
 
-			dump: {
+			prodImages: {
+				files: [
+					{
+						expand: true,
+						cwd: 'project/dev/',
+						src: ['images/**/*.*'],
+						dest: 'project/prod',
+					},
+				],
+			},
+
+			devJS: {
+				files: [
+					{
+						expand: true,
+						cwd: 'project/src/scripts',
+						src: ['**/*.js'],
+						dest: 'project/dev/scripts',
+					},
+				],
+			},
+
+			devDump: {
 				files: [
 					{
 						expand: true,
 						cwd: 'project/src/dump/',
 						src: ['**/*.*'],
-						dest: 'project/build',
+						dest: 'project/dev',
+					},
+				],
+			},
+
+			prodDump: {
+				files: [
+					{
+						expand: true,
+						cwd: 'project/src/dump/',
+						src: ['**/*.*'],
+						dest: 'project/prod',
 					},
 				],
 			},
@@ -246,6 +409,10 @@ module.exports = function(grunt) {
 
 
 
+
+
+
+
 		//	Update the above when required
 		watch: {
 			options: {
@@ -261,7 +428,7 @@ module.exports = function(grunt) {
 			styles: {
 				files: [ 'project/src/styles/**/*.scss' ],
 				tasks: [
-					'sass:referenced', 'autoprefixer:referenced',
+					'sass:dev', 'autoprefixer:dev',
 					'processhtml', 'relativeRoot', 'htmlmin',
 				]
 			},
@@ -284,6 +451,10 @@ module.exports = function(grunt) {
 				tasks: [ 'copy:dump', ]
 			},
 		},
+
+
+
+
 
 	});
 

@@ -17,9 +17,9 @@
 	position: relative;
 	float: left;
 	height: 250px;
-	filter: saturate( .2 ) brightness( .5 );
+	//filter: saturate( .2 ) brightness( .5 );
 
-	background: $clr-shadow 50% 0 no-repeat;
+	background: 50% 0 no-repeat;
 	background-size: cover;
 
 	cursor: pointer;
@@ -54,11 +54,11 @@
 		}
 
 		&-3 {
-			width: 50%;
+			width: (100%)/2;
 		}
 
 		&-4 {
-			width: 50%;
+			width: (100%)/2;
 		}
 	}
 
@@ -83,4 +83,49 @@
 	@media ( min-height: 600px ) {
 		height: 400px;
 	}
+
+
+
+	&__info {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+
+		width: 100%;
+		padding: 10px 20px;
+		padding-top: 50px;
+
+		background-image: linear-gradient( to bottom, transparentize( $clr-body, 1 ), transparentize( $clr-body, .05 ) 60px );
+
+		.builtSite:nth-child(2n) & {
+			background-image: linear-gradient( to bottom, transparentize( $clr-paper, 1 ), transparentize( $clr-paper, .05 ) 60px );
+		}
+
+		&__copy {
+			margin: 5px 0;
+		}
+
+		&__link {
+			display: block;
+
+			margin-bottom: 0;
+
+			color: #1b70ef;
+			text-align: right;
+		}
+
+		@media ( min-height: 600px ) {
+			&__copy {
+				margin: 10px 0;
+			}
+		}
+	}
+}
+
+.builtSitesSafetyText {
+	clear: both;
+
+	padding: 10px 20px;
+
+	font-size: 12px;
 }
