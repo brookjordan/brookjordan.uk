@@ -30,60 +30,44 @@ $main-head-height: 46px;
 	@extend .cf;
 	//@extend .containerWidth;
 }
-.menuToggleContainer {
+.menuToggle {
+	position: relative;
+	z-index: 10;
 	float: right;
 
-	padding: 10px;
-
-	width: 55px;
+	width: 46px;
 	height: $main-head-height;
 
 	cursor: pointer;
+
+	background: no-repeat url("../images/MC.png");
+	background-position: 100% 50%;
+	background-size: (46px)*7 46px;
+
+	animation: to-menu .3s steps(6) 1;
+
+	&--open {
+		background-position: 0% 50%;
+		animation: to-close .3s steps(6) 1;
+	}
 }
 
-.menuToggle {
-	$toggle-bar-height: 4px;
+@keyframes to-close {
+  from {
+    background-position: 100% 50%;
+  }
+  to {
+    background-position: 0% 50%;
+  }
+}
 
-	position: relative;
-	z-index: 1;
-
-	width: 100%;
-	height: 100%;
-
-	border-top: $toggle-bar-height solid $clr-txt-body;
-	border-bottom: $toggle-bar-height solid $clr-txt-body;
-
-	transition: border .2s;
-
-	&:after, &:before {
-		content: '';
-		display: block;
-
-		position: absolute;
-		top: 50%;
-		left: 0;
-		margin-top: -$toggle-bar-height/2;
-
-		width: 100%;
-		height: $toggle-bar-height;
-
-		background-color: $clr-txt-body;
-
-		transform: rotate( 0deg );
-		transition: transform .2s;
-	}
-
-	.menuToggleContainer--open & {
-		border-top-width: 0;
-		border-bottom-width: 0;
-
-		&:before {
-			transform: rotate( 45deg );
-		}
-		&:after {
-			transform: rotate( -45deg );
-		}
-	}
+@keyframes to-menu {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
 }
 
 .headMenu {
@@ -157,7 +141,7 @@ $main-head-height: 46px;
 		}
 	}
 
-	.menuToggleContainer--open + & {
+	.menuToggle--open + & {
 		right: 0;
 
 		opacity: 1;
