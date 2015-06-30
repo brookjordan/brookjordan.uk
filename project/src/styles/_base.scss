@@ -2,11 +2,11 @@
 
 body{
 	padding-top: 30px;
-	padding-bottom: 10%;
+	padding-bottom: 50px;
 
 	background-color: $clr-body;
 
-	font-family: Baskerville, 'Libre Baskerville', serif;
+	font-family: Georgia, serif;
 	line-height: 1.3;
 	color: $clr-txt-body;
 
@@ -51,11 +51,6 @@ p {
 
 
 
-.cf:after, .cf:before {
-	content: '';
-	display: table;
-	clear: both;
-}
 
 .borderShadow {
 	border: $clr-shadow solid;

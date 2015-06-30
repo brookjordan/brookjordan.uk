@@ -1,0 +1,102 @@
+$carouselItemWidth: 200px;
+$carouselHeight: ( $carouselItemWidth )/1.5;
+
+$buttonWidth: 44px;
+$buttonWidthWide: 60px;
+
+
+
+.projectsContainer {
+	@extend .containerWidth;
+	min-width: 320px;
+
+	margin-top: $buttonWidth;
+}
+
+.carouselPrev,
+.carouselNext {
+	height: $carouselHeight;
+	width: $buttonWidth;
+
+	flex-grow: 0;
+
+	background: transparent 50% 50% no-repeat;
+	background-size: 44px 100px;
+
+	transition: opacity .2s;
+
+	&--disabled {
+		opacity: 0.2;
+		cursor: default;
+	}
+}
+.carouselPrev {
+	background-image: url("../images/b-previous.png");
+}
+.carouselNext {
+	background-image: url("../images/b-next.png");
+}
+
+.carouselContainer {
+	display: flex;
+}
+
+.carousel {
+	height: $carouselHeight;
+	@extend .borderShadow;
+
+	overflow: hidden;
+
+	flex-grow: 1;
+}
+
+.viewFinder {
+	height: $carouselHeight;
+
+	transition-property: left, margin-left;
+	transition-duration: .3s;
+	transition-timing-function: ease-in-out;
+}
+
+.film {
+	transition-property: left;
+	transition-duration: .3s;
+	transition-timing-function: ease-out;
+}
+
+.item {
+	height: $carouselHeight;
+
+	background: #CCC;
+
+	transition: box-shadow .4s;
+
+	&:nth-child( 2n ) {
+		//background: #333;
+	}
+
+	&--focused {
+		//box-shadow: inset 0 0 20px red;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+		@extend .borderShadow;
+		border-radius: 0;
+	}
+}
+
+@media ( min-width: 800px ) {
+	.projectsContainer {
+		margin-top: $buttonWidthWide;
+	}
+
+	.carouselPrev,
+	.carouselNext {
+		width: $buttonWidthWide;
+	}
+}
+
+
+

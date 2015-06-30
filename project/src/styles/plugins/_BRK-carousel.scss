@@ -1,0 +1,25 @@
+.carousel {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.viewFinder {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	margin-left: 0px;
+}
+
+.film {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	@extend .cf;
+}
+
+.item {
+	float: left;
+}

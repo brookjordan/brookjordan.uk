@@ -6,11 +6,34 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href='http://fonts.googleapis.com/css?family=Henny+Penny|Libre+Baskerville' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
 
-	<!-- build:css styles/main.6.css -->
+	<!-- build:css styles/main.7.css -->
 	<link rel="stylesheet" href="styles/main.css">
 	<!-- endbuild -->
+
+	<!-- Icons and themes -->
+	<link rel="manifest" href="/manifest.json">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+	<meta name="theme-color" content="#f3eada">
+
+	<meta name="msapplication-TileColor" content="#603cba">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<!-- END - Icons and themes -->
 </head>
 <body>
 
@@ -145,18 +168,97 @@
 
 
 
-<!-- build:js scripts/main.6.js -->
+<div class="projectsContainer">
+
+	<h3 class="stage__title">Various tests</h3>
+	<p>These links are all safe.</p>
+
+	<div class="carouselContainer">
+		<button class="carouselPrev"></button>
+
+		<div class="carousel">
+			<div class="viewFinder">
+				<div class="film">
+					<a href="http://brookjordan.uk/projects-local/cardthrow/" class="item">
+						<img
+							src="/images/p-card-throw.jpg"
+							alt="">
+					</a>
+					<a href="http://brookjordan.uk/projects-local/colourclock/" class="item">
+						<img
+							src="/images/p-colour-clock.jpg"
+							alt="">
+					</a>
+					<a href="http://brookjordan.uk/projects-local/flappyfish/" class="item">
+						<img
+							src="/images/p-floppy-fish.jpg"
+							alt="">
+					</a>
+					<a href="http://brookjordan.uk/projects-local/draggies/Human/" class="item">
+						<img
+							src="/images/p-draggies.jpg"
+							alt="">
+					</a>
+					<a href="http://brookjordan.uk/projects-local/parsejson/" class="item">
+						<img
+							src="/images/p-parse-json.jpg"
+							alt="">
+					</a>
+					<a href="http://brookjordan.uk/projects/responsivecarousel/" class="item">
+						<img
+							src="/images/p-responsive-carousel.jpg"
+							alt="">
+					</a>
+					<a href="http://brookjordan.uk/projects-local/rotator/" class="item">
+						<img
+							src="/images/p-follow-rotate.jpg"
+							alt="">
+					</a>
+					<a href="http://brookjordan.uk/projects-local/textfit/" class="item">
+						<img
+							src="/images/p-text-width.jpg"
+							alt="">
+					</a>
+					<a href="http://brookjordan.uk/projects-local/cssgrid/" class="item">
+						<img
+							src="/images/p-column-builder.jpg"
+							alt="">
+					</a>
+					<a href="#" class="item">
+						<img
+							src="/images/p-auto-tab.jpg"
+							alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<button class="carouselNext"></button>
+	</div>
+
+</div>
+
+
+
+<!-- build:js scripts/main.7.js -->
 	<!-- Compatibility classes -->
 	<script src="scripts/compatibilityClasses/touch.js"></script>
 
 	<!-- Plugins -->
 	<script src="scripts/BRK_viewer.js"></script>
+	<script src="scripts/BRK_carousel.js"></script>
 	<script src="scripts/enhanceImages.js"></script>
 
 	<!-- Header bits -->
 	<script src="scripts/header/headerLogoResize.js"></script>
 	<script src="scripts/header/hideHeader.js"></script>
 	<script src="scripts/header/topMenuToggle.js"></script>
+
+	<!-- Previous projects -->
+	<script src="scripts/projectsCarousel.js"></script>
+
+	<!-- Misc bits -->
+	<script src="scripts/main.js"></script>
 <!-- endbuild -->
 
 </body>

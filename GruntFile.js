@@ -4,7 +4,9 @@ module.exports = function(grunt) {
 
 
 
-	addTask( 'dev', [
+
+
+	grunt.registerTask( 'dev', [
 			'copy:svgs', 'copy:devDump',
 
 			'sass:dev', 'autoprefixer:dev',
@@ -16,7 +18,7 @@ module.exports = function(grunt) {
 			'newer:imagemin',
 		]);
 
-	addTask( 'prod', [
+	grunt.registerTask( 'prod', [
 			'copy:prodImages', 'copy:prodDump',
 
 			'processhtml',
@@ -28,17 +30,21 @@ module.exports = function(grunt) {
 			'htmlmin:prod',
 		]);
 
-	addTask('build', [
+	grunt.registerTask( 'RESET', [
 			'clean:created',
+		]);
+
+	grunt.registerTask('build', [
+			'RESET',
 			'dev', 'prod',
 		]);
 
-	addTask( 'default', [
+	grunt.registerTask( 'default', [
 			'dev',
 			'watch',
 		]);
 
-	//addTask( 'refresh', ['clean'], 'default' );
+	//grunt.registerTask( 'refresh', ['clean'], 'default' );
 
 
 
@@ -105,7 +111,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd:  'project/src/pages',
 					src: [ '**/*.html' ],
-					dest: 'project/dev'
+					dest: 'project/dev',
 				},],
 			},
 		},
@@ -126,7 +132,7 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd:  'project/dev/styles',
 					src: [ '**/*.css' ],
-					dest: 'project/dev/styles_rel'
+					dest: 'project/dev/styles_rel',
 				},],
 			},
 		},
@@ -461,44 +467,5 @@ module.exports = function(grunt) {
 
 
 	require('load-grunt-tasks')(grunt);
-
-	registerTasks();
-
-
-
-
-
-
-
-	//	FUNCTIONS	//	FUNCTIONS	//
-
-	function addTask ( taskName, prependTasks, appendTasks ) {
-
-		var newTaskList = [];
-		var i = 1;
-
-		while ( !!arguments[i] ) {
-
-			if ( typeof arguments[i] === 'string' && __tasks[ arguments[i] ] ) {
-				newTaskList = newTaskList.concat( __tasks[ arguments[i] ] );
-			} else {
-				newTaskList = newTaskList.concat( arguments[i] );
-			}
-
-			i+=1;
-
-		}
-
-		__tasks[ taskName ] = newTaskList;
-
-	}
-
-
-
-	function registerTasks () {
-		Object.keys( __tasks ).forEach ( function ( value, index, array ) {
-			grunt.registerTask( value, __tasks[value] );
-		});
-	}
 
 };

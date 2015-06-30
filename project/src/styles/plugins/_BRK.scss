@@ -1,0 +1,5 @@
+.cf:after, .cf:before {
+	content: '';
+	display: table;
+	clear: both;
+}

@@ -3,7 +3,11 @@
 @import "variables";
 @import "base";
 
+@import "plugins/BRK";
+@import "plugins/BRK-carousel";
+
 @import "templates/header";
 @import "templates/stages";
 @import "templates/built";
 @import "templates/viewer";
+@import "templates/carousel";
