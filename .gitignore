@@ -2,7 +2,6 @@
 ############
 build/**/*
 temp/**/*
-*.html
 
 node_modules/**/*
 bower_components/**/*
