@@ -93,12 +93,11 @@
 
 		width: 100%;
 		padding: 10px 20px;
-		padding-top: 50px;
 
-		background-image: linear-gradient( to bottom, transparentize( $clr-body, 1 ), transparentize( $clr-body, .05 ) 60px );
+		background-color: transparentize( $clr-body, .1 );
 
 		.builtSite:nth-child(2n) & {
-			background-image: linear-gradient( to bottom, transparentize( $clr-paper, 1 ), transparentize( $clr-paper, .05 ) 60px );
+			background-color: transparentize( $clr-paper, .1 );
 		}
 
 		&__copy {

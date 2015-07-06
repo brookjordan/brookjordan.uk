@@ -7,11 +7,7 @@ $main-head-height: 46px;
 	left: 0;
 	width: 100%;
 
-	background-image: linear-gradient(
-		to top,
-		transparentize( $clr-body, 1 ),
-		transparentize( $clr-body, .1 ) 5px
-	);
+	background-color: transparentize( $clr-body, .1 );
 
 	transition: top .2s ease-in;
 
