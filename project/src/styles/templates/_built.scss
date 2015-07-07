@@ -46,6 +46,26 @@
 
 	@media ( min-width: 500px ) {
 		&-1 {
+			width: (100%)/2;
+		}
+
+		&-2 {
+			width: (100%)/2;
+		}
+
+		&-3 {
+			width: (100%)/2;
+		}
+
+		&-4 {
+			width: (100%)/2;
+		}
+	}
+
+	@media ( min-height: 600px ) and ( min-width: 1000px ) {
+		height: 500px;
+
+		&-1 {
 			width: 100%;
 		}
 
@@ -62,7 +82,7 @@
 		}
 	}
 
-	@media ( min-width: 1000px ) {
+	@media ( min-height: 600px ) and ( min-width: 1300px ) {
 		&-1 {
 			width: 100%;
 		}
@@ -78,10 +98,6 @@
 		&-4 {
 			width: (100%)/3;
 		}
-	}
-
-	@media ( min-height: 600px ) {
-		height: 400px;
 	}
 
 
@@ -113,7 +129,7 @@
 			text-align: right;
 		}
 
-		@media ( min-height: 600px ) {
+		@media ( min-height: 600px ) and ( min-width: 1000px ) {
 			&__copy {
 				margin: 10px 0;
 			}

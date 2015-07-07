@@ -48,23 +48,25 @@ function attachViewerToElement ( attachedTo_elt ) {
 		var clickedImage             = attachedTo_elt;
 		var imgBackgroundImage       = clickedImage.style.backgroundImage;
 		var src                      = imgBackgroundImage.slice(
-			imgBackgroundImage.indexOf('(') + 1,
-			imgBackgroundImage.lastIndexOf(')')
-		);
+				imgBackgroundImage.indexOf('(') + 1,
+				imgBackgroundImage.lastIndexOf(')')
+			);
+		var src_big                  = src.replace( /(\.\w{3,4})/, '-big$1' );;
 
 
 
 		imageBounds = clickedImage.getBoundingClientRect();
 
+		viewerImg.src = src_big;
+
 		viewerImgContainer.style.top        = imageBounds.top + 'px';
 		viewerImgContainer.style.left       = imageBounds.left + 'px';
 		viewerImgContainer.style.width      = imageBounds.width + 'px';
 		viewerImgContainer.style.height     = imageBounds.height + 'px';
+		viewerImgContainer.style.display = 'block';
 
-		viewerImg.src = src;
 
 		viewerUnderlay.style.display = 'block';
-		viewerImgContainer.style.display = 'block';
 		document.body.style.overflow = 'hidden';
 
 		setTimeout( centerViewerImage, 4 );
@@ -81,6 +83,7 @@ function attachViewerToElement ( attachedTo_elt ) {
 		viewerImgContainer.style.left   = '5%';
 		viewerImgContainer.style.width  = '90%';
 		viewerImgContainer.style.height = '90%';
+		viewerImgContainer.style.opacity = 1;
 
 		viewerUnderlay.style.opacity = '0.9';
 	}
@@ -98,6 +101,7 @@ function attachViewerToElement ( attachedTo_elt ) {
 		viewerImgContainer.style.left       = imageBounds.left + 'px';
 		viewerImgContainer.style.width      = imageBounds.width + 'px';
 		viewerImgContainer.style.height     = imageBounds.height + 'px';
+		viewerImgContainer.style.opacity = 0;
 
 		viewerUnderlay.style.opacity = 0;
 
@@ -118,13 +122,13 @@ function attachViewerToElement ( attachedTo_elt ) {
 	}
 
 	function setTransitions () {
-		viewerUnderlay.style.transitionProperty             = 'opacity';
+		viewerUnderlay.style.transitionProperty     = 'opacity';
 		viewerImgContainer.style.transitionProperty = 'top, left, width, height, opacity';
 	}
 
 	function unsetTransitions () {
-		viewerUnderlay.style.transitionProperty             = 'none';
-		viewerImgContainer.style.transitionProperty = 'none';
+		viewerUnderlay.style.transitionProperty     = 'none';
+		viewerImgContainer.style.transitionProperty = 'opacity';
 	}
 
 
