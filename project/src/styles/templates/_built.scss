@@ -1,26 +1,46 @@
 .builtSitesContainer {
 	background-color: $clr-paper;
-	margin-top: 50px;
+	margin-top: 44px;
+	padding-top: 44px;
 
 	@extend .cf;
+
+	@media ( min-width: 800px ) {
+		margin-top: 60px;
+		padding-top: 60px;
+	}
 }
 
 .builtSites {
 	@extend .containerWidth;
 
 	padding: 40px 0;
+	padding-top: 2px;
 
 	@extend .cf;
+
+	&__title {
+		@extend .titleSize;
+	}
+
+	> p {
+		margin-bottom: 5px;
+	}
+}
+
+.stage__title-builtSites {
+	margin-bottom: 5px;
 }
 
 .builtSite {
 	position: relative;
 	float: left;
 	height: 250px;
-	//filter: saturate( .2 ) brightness( .5 );
+	margin-top: -2px;
 
 	background: 50% 0 no-repeat;
 	background-size: cover;
+	@extend .borderShadow;
 
 	cursor: pointer;
 

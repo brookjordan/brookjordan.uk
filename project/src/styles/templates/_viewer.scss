@@ -38,3 +38,10 @@
 	width: 100%;
 	height:    auto;
 }
+
+@media ( max-height: 400px ), ( max-width: 700px ) {
+	.imageViewer,
+	.imageViewerImageContainer {
+		transition: opacity !important;
+	}
+}
