@@ -8,7 +8,7 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
 
-	<!-- build:css styles/main.8.css -->
+	<!-- build:css styles/main.17.css -->
 	<link rel="stylesheet" href="styles/main.css">
 	<!-- endbuild -->
 
@@ -48,8 +48,8 @@
 	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
 	<!-- END - Icons and themes -->
 </head>
-<body>
-
+<body class="NO-js">
+<script>document.body.classList.remove( 'NO-js' )</script>
 
 
 <header class="mainHeadContainer" >
@@ -125,49 +125,96 @@
 <div class="builtSitesContainer">
 	<div class="builtSites">
 
-		<h3 class="stage__title">sites I've worked on</h3>
+		<h3 class="builtSites__title">sites I've worked on</h3>
 		<p>Click on images for a full-site snap-shots*</p>
 
-		<div
-			style="background-image: url( './images/s-tv-sml.jpg' )"
-			class="builtSite builtSite-1">
-			<div class="builtSite__info">
-				<p class="builtSite__info__copy">Tennis TV - vod and live streaming</p>
-				<a class="builtSite__info__copy builtSite__info__link"
+		<div class="builtSitesWrapper">
+			<div class="builtSiteContainer"
+				 style="background-image: url( 'images/s-tv.jpg' )">
+				<a  class="builtSite"
+					href="images/s-tv-big.jpg">
+					<div class="builtSite__info">
+						<p class="builtSite__info__copy">Tennis TV - vod and live streaming</p>
+
+					</div>
+				</a>
+				<a class="builtSite__externalLink"
 				   href="http://www.tennistv.com/"
-				   target="_blank">live site ></a>
+				   target="_blank">live site &gt;</a>
 			</div>
-		</div>
-		<div
-			style="background-image: url( './images/s-bb-sml.jpg' )"
-			class="builtSite builtSite-2">
-			<div class="builtSite__info">
-				<p class="builtSite__info__copy">Betway Bingo - games lobby</p>
-				<a class="builtSite__info__copy builtSite__info__link"
+
+			<div class="builtSiteContainer"
+				 style="background-image: url( 'images/s-bb.jpg' )">
+				<a  class="builtSite"
+					href="images/s-bb-big.jpg">
+					<div class="builtSite__info">
+						<p class="builtSite__info__copy">Betway Bingo - games lobby</p>
+
+					</div>
+				</a>
+				<a class="builtSite__externalLink"
 				   href="https://bingo.betway.com/"
-				   target="_blank">live site ></a>
+				   target="_blank">live site &gt;</a>
 			</div>
-		</div>
-		<div
-			style="background-image: url( './images/s-bn-sml.jpg' )"
-			class="builtSite builtSite-3">
-			<div class="builtSite__info">
-				<p class="builtSite__info__copy">Brann football club - Norwegian football statistics and news</p>
-				<a class="builtSite__info__copy builtSite__info__link"
+
+			<div class="builtSiteContainer"
+				 style="background-image: url( 'images/s-bn.jpg' )">
+				<a  class="builtSite"
+					href="images/s-bn-big.jpg">
+					<div class="builtSite__info">
+						<p class="builtSite__info__copy">Brann football club - Norwegian football statistics and news</p>
+
+					</div>
+				</a>
+				<a class="builtSite__externalLink"
 				   href="http://www.brann.no/"
-				   target="_blank">live site ></a>
+				   target="_blank">live site &gt;</a>
 			</div>
-		</div>
-		<div
-			style="background-image: url( './images/s-lu-sml.jpg' )"
-			class="builtSite builtSite-4">
-			<div class="builtSite__info">
-				<p class="builtSite__info__copy">Leeds United FC - live video and statistics</p>
-				<a class="builtSite__info__copy builtSite__info__link"
+
+			<div class="builtSiteContainer"
+				 style="background-image: url( 'images/s-lu.jpg' )">
+				<a  class="builtSite"
+					href="images/s-lu-big.jpg">
+					<div class="builtSite__info">
+						<p class="builtSite__info__copy">Leeds United FC - live video and statistics</p>
+
+					</div>
+				</a>
+				<a class="builtSite__externalLink"
 				   href="http://www.leedsunited.com/"
-				   target="_blank">live site ></a>
+				   target="_blank">live site &gt;</a>
 			</div>
 		</div>
+		<script>
+		(function(){
+			var sitesWrapper_elt = document.querySelector( '.builtSitesWrapper' );
+			var sites_elts = sitesWrapper_elt.querySelectorAll( '.builtSiteContainer' );
+			var sites = [];
+			var i;
+
+			Array.prototype.forEach.call( sites_elts, pushSiteEltIntoSitesArray );
+
+			while ( sites.length > 0 ) {
+				appendBuiltSiteToWrapper();
+			}
+
+
+			function pushSiteEltIntoSitesArray ( elt ) {
+				sites.push( elt );
+			}
+
+			function appendBuiltSiteToWrapper () {
+				var eltID = Math.floor(Math.random()*sites.length);
+				var newFirst = sites.splice( eltID, 1 )[0];
+				var className = 'builtSite-' + ( sites.length + 1 );
+
+				sitesWrapper_elt.insertBefore( newFirst, sitesWrapper_elt.firstChild );
+				newFirst.classList.add( className );
+			}
+
+		}());
+		</script>
+
 
 		<div class="builtSitesSafetyText">
 			<p>*Although I try my best to keep all information up-to-date I do not control many of these sites anymore. As such leaving my site is at your own risk - plus the websites may have changed since I worked on them.</p>
@@ -186,7 +233,7 @@
 	<h3 class="stage__title">Various tests</h3>
 	<p>These links are all safe.</p>
 
-	<div class="carouselContainer">
+	<div class="carouselContainer carouselContainer--inactive">
 		<button class="carouselPrev"></button>
 
 		<div class="carousel">
@@ -258,7 +305,7 @@
 
 
 
-<!-- build:js scripts/main.7.js -->
+<!-- build:js scripts/main.17.js -->
 	<!-- Compatibility classes -->
 	<script src="scripts/compatibilityClasses/touch.js"></script>
 

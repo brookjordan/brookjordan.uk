@@ -4,6 +4,7 @@
 
 var prev_elt  = document.querySelector( '.carouselPrev' );
 var next_elt  = document.querySelector( '.carouselNext' );
+var container_elt  = document.querySelector( '.carouselContainer' );
 
 var carousel = brk.carousel({
 	width: 200
@@ -13,6 +14,7 @@ prev_elt.addEventListener( 'click', goToPreviousPosition, false );
 next_elt.addEventListener( 'click', goToNextPosition, false );
 
 setClasses();
+container_elt.classList.remove( 'carouselContainer--inactive' );
 
 
 //	FUNCTIONS

@@ -1,7 +1,9 @@
 # Personal #
 ############
-build/**/*
-temp/**/*
+project/prod
+project/dev
+project/dev-temp
+.tmp
 
 node_modules/**/*
 bower_components/**/*
@@ -85,10 +87,3 @@ CVS
 Backup[ ]of[ ]*.pages/
 Backup[ ]of[ ]*.key/
 Backup[ ]of[ ]*.numbers/
-
-#project
-project/prod
-project/dev
-project/dev-temp
-.tmp
-image src

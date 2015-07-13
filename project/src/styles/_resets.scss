@@ -7,6 +7,10 @@
 	font-weight: inherit;
 }
 
+html {
+    text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+}
+
 html, body, div, h1, h2, h3, h4, p, time,
 article, section, time, nav {
 	display: block;
@@ -31,6 +35,7 @@ a {
 button {
 	display: block;
 
+	padding: 0;
 	border: none;
 
 	background: none;

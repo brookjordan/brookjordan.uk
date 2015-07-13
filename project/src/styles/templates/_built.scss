@@ -1,90 +1,130 @@
 .builtSitesContainer {
 	background-color: $clr-paper;
-	margin-top: 50px;
+	margin-top: 44px;
+	padding-top: 44px;
 
 	@extend .cf;
+
+	@media ( min-width: 800px ) {
+		margin-top: 60px;
+		padding-top: 60px;
+	}
 }
 
 .builtSites {
 	@extend .containerWidth;
 
 	padding: 40px 0;
+	padding-top: 2px;
 
 	@extend .cf;
+
+	&__title {
+		@extend .titleSize;
+	}
+
+	> p {
+		margin-bottom: 5px;
+	}
 }
 
-.builtSite {
+.stage__title-builtSites {
+	margin-bottom: 5px;
+}
+
+.builtSiteContainer {
 	position: relative;
 	float: left;
 	height: 250px;
-	//filter: saturate( .2 ) brightness( .5 );
+	width: 100%;
+	margin-top: -2px;
 
 	background: 50% 0 no-repeat;
 	background-size: cover;
-
-	cursor: pointer;
+	@extend .borderShadow;
 
 	transition: transform .2s, border .2s;
 
 
 
-	&-1 {
-		width: 100%;
-	}
-
-	&-2 {
-		width: 100%;
-	}
-
-	&-3 {
-		width: 100%;
-	}
-
-	&-4 {
-		width: 100%;
-	}
-
 	@media ( min-width: 500px ) {
-		&-1 {
-			width: 100%;
-		}
-
-		&-2 {
-			width: 100%;
-		}
-
-		&-3 {
+		&:nth-child(1) {
 			width: (100%)/2;
 		}
 
-		&-4 {
+		&:nth-child(2) {
+			width: (100%)/2;
+		}
+
+		&:nth-child(3) {
+			width: (100%)/2;
+		}
+
+		&:nth-child(4) {
 			width: (100%)/2;
 		}
 	}
 
-	@media ( min-width: 1000px ) {
-		&-1 {
+	@media ( min-height: 600px ) and ( min-width: 1000px ) {
+		height: 500px;
+
+		&:nth-child(1) {
 			width: 100%;
 		}
 
-		&-2 {
-			width: (100%)/3;
+		&:nth-child(2) {
+			width: 100%;
 		}
 
-		&-3 {
-			width: (100%)/3;
+		&:nth-child(3) {
+			width: (100%)/2;
 		}
 
-		&-4 {
-			width: (100%)/3;
+		&:nth-child(4) {
+			width: (100%)/2;
 		}
 	}
 
-	@media ( min-height: 600px ) {
-		height: 400px;
+	@media ( min-height: 600px ) and ( min-width: 1300px ) {
+		&:nth-child(1) {
+			width: 100%;
+		}
+
+		&:nth-child(2) {
+			width: (100%)/3;
+		}
+
+		&:nth-child(3) {
+			width: (100%)/3;
+		}
+
+		&:nth-child(4) {
+			width: (100%)/3;
+		}
+	}
+}
+
+
+.builtSite {
+	display: block;
+	width: 100%;
+	height: 100%;
+
+	&:nth-child(1) {
+		width: 100%;
 	}
 
+	&:nth-child(2) {
+		width: 100%;
+	}
 
+	&:nth-child(3) {
+		width: 100%;
+	}
+
+	&:nth-child(4) {
+		width: 100%;
+	}
 
 	&__info {
 		position: absolute;
@@ -93,6 +133,7 @@
 
 		width: 100%;
 		padding: 10px 20px;
+		padding-right: 100px;
 
 		background-color: transparentize( $clr-body, .1 );
 
@@ -104,20 +145,24 @@
 			margin: 5px 0;
 		}
 
-		&__link {
-			display: block;
-
-			margin-bottom: 0;
-
-			color: $clr-txt-link;
-			text-align: right;
-		}
-
-		@media ( min-height: 600px ) {
+		@media ( min-height: 600px ) and ( min-width: 1000px ) {
 			&__copy {
 				margin: 10px 0;
 			}
 		}
+	}
+
+	&__externalLink {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+
+		line-height: 50px;
+
+		padding: 0 15px;
+		margin: 0;
+
+		color: $clr-txt-link;
 	}
 }
 

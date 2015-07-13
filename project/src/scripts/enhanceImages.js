@@ -1,3 +1,4 @@
+/*
 (function(){"use strict";
 
 
@@ -41,3 +42,4 @@ function loadImage ( elt, imageURL ) {
 
 
 }());
+*/
