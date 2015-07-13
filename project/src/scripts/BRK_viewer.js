@@ -37,12 +37,13 @@ Array.prototype.forEach.call( document.querySelectorAll('.builtSite'), attachVie
 function attachViewerToElement ( attachedTo_elt ) {
 
 	var clickedImage             = attachedTo_elt;
-	var imgBackgroundImage       = clickedImage.style.backgroundImage;
+	var clickedImageContainer    = clickedImage.parentNode;
+	var imgBackgroundImage       = clickedImageContainer.style.backgroundImage;
 	var src                      = imgBackgroundImage.slice(
 			imgBackgroundImage.indexOf('(') + 1,
 			imgBackgroundImage.lastIndexOf(')')
 		);
-	var src_big                  = src.replace( /(\.\w{3,4})/, '-big$1' );
+	var src_big                  = src.replace( /(\.\w{3,4})$/, '-big$1' );
 	var imagePreloader = new Image();
 
 	//	Preload the full preview
@@ -50,10 +51,6 @@ function attachViewerToElement ( attachedTo_elt ) {
 	attachedTo_elt.addEventListener( 'click', openInViewer, false );
 
 	function openInViewer ( e ) {
-		if ( e.target.nodeName.toUpperCase() === 'A' ) {
-			return
-		}
-
 		e.preventDefault();
 
 		imageBounds = clickedImage.getBoundingClientRect();

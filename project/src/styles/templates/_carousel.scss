@@ -87,6 +87,25 @@ $buttonWidthWide: 60px;
 	}
 }
 
+.carouselContainer--inactive {
+	.carouselPrev,
+	.carouselNext {
+		display: none;
+	}
+
+	.carousel {
+		overflow: auto;
+	}
+
+	.viewFinder {
+		width: $carouselItemWidth * 20;
+	}
+
+	.item {
+		width: $carouselItemWidth;
+	}
+}
+
 @media ( min-width: 800px ) {
 	.projectsContainer {
 		margin-top: $buttonWidthWide;
