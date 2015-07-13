@@ -1,0 +1,26 @@
+.NO-js {
+	padding-top: 0;
+
+	.mainHeadContainer {
+		position: static;
+	}
+
+	.menuToggle {
+		display: none;
+	}
+
+	.headMenu {
+		right: 0;
+
+		padding-right: 10px;
+		padding-left: 80px;
+		background: none;
+		border: none;
+
+		opacity: 1;
+	}
+
+	.pageTitle {
+		margin-top: 50px;
+	}
+}
