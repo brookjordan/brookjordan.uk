@@ -5,11 +5,13 @@ module.exports = function(grunt) {
 
 
 
-
+	grunt.registerTask( 'dev-style', [
+			'sass:dev', 'autoprefixer:dev',
+		]);
 	grunt.registerTask( 'dev', [
 			'copy:svgs', 'copy:devDump',
 
-			'sass:dev', 'autoprefixer:dev',
+			'dev-style',
 
 			'copy:devJS',
 
@@ -431,6 +433,10 @@ module.exports = function(grunt) {
 				tasks: [ 'processhtml', 'relativeRoot', 'htmlmin', ]
 			},
 
+			styles_dev: {
+				files: [ 'project/src/styles/**/*.scss' ],
+				tasks: [ 'dev-style' ],
+			},
 			styles: {
 				files: [ 'project/src/styles/**/*.scss' ],
 				tasks: [

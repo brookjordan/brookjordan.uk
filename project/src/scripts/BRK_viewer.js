@@ -37,8 +37,8 @@ Array.prototype.forEach.call( document.querySelectorAll('.builtSite'), attachVie
 function attachViewerToElement ( attachedTo_elt ) {
 
 	var clickedImage             = attachedTo_elt;
-	var clickedImageContainer    = clickedImage.parentNode;
-	var imgBackgroundImage       = clickedImageContainer.style.backgroundImage;
+	var clickedImageIllustration = clickedImage.querySelector( '.builtSite__image' );
+	var imgBackgroundImage       = clickedImageIllustration.style.backgroundImage;
 	var src                      = imgBackgroundImage.slice(
 			imgBackgroundImage.indexOf('(') + 1,
 			imgBackgroundImage.lastIndexOf(')')

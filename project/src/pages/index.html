@@ -8,7 +8,7 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
 
-	<!-- build:css styles/main.18.css -->
+	<!-- build:css styles/main.19.css -->
 	<link rel="stylesheet" href="styles/main.css">
 	<!-- endbuild -->
 
@@ -129,56 +129,52 @@
 		<p>Click on images for a full-site snap-shots*</p>
 
 		<div class="builtSitesWrapper">
-			<div class="builtSiteContainer"
-				 style="background-image: url( 'images/s-tv.jpg' )">
+			<div class="builtSiteContainer">
 				<a  class="builtSite"
 					href="images/s-tv-big.jpg">
-					<div class="builtSite__info">
-						<p class="builtSite__info__copy">Tennis TV - vod and live streaming</p>
-
-					</div>
+					<span class="builtSite__image"
+					      style="background-image: url( 'images/s-tv.jpg' )"
+					      role="presentation"></span>
+					<p class="builtSite__info bg-body">Tennis TV - vod and live streaming</p>
 				</a>
 				<a class="builtSite__externalLink"
 				   href="http://www.tennistv.com/"
 				   target="_blank">live site &gt;</a>
 			</div>
 
-			<div class="builtSiteContainer"
-				 style="background-image: url( 'images/s-bb.jpg' )">
+			<div class="builtSiteContainer">
 				<a  class="builtSite"
 					href="images/s-bb-big.jpg">
-					<div class="builtSite__info">
-						<p class="builtSite__info__copy">Betway Bingo - games lobby</p>
-
-					</div>
+					<span class="builtSite__image"
+					      style="background-image: url( 'images/s-bb.jpg' )"
+					      role="presentation"></span>
+					<p class="builtSite__info bg-paper">Betway Bingo - games lobby</p>
 				</a>
 				<a class="builtSite__externalLink"
 				   href="https://bingo.betway.com/"
 				   target="_blank">live site &gt;</a>
 			</div>
 
-			<div class="builtSiteContainer"
-				 style="background-image: url( 'images/s-bn.jpg' )">
+			<div class="builtSiteContainer">
 				<a  class="builtSite"
 					href="images/s-bn-big.jpg">
-					<div class="builtSite__info">
-						<p class="builtSite__info__copy">Brann football club - Norwegian football statistics and news</p>
-
-					</div>
+					<span class="builtSite__image"
+					      style="background-image: url( 'images/s-bn.jpg' )"
+					      role="presentation"></span>
+					<p class="builtSite__info bg-body">Brann football club - Norwegian football statistics and news</p>
 				</a>
 				<a class="builtSite__externalLink"
 				   href="http://www.brann.no/"
 				   target="_blank">live site &gt;</a>
 			</div>
 
-			<div class="builtSiteContainer"
-				 style="background-image: url( 'images/s-lu.jpg' )">
+			<div class="builtSiteContainer">
 				<a  class="builtSite"
 					href="images/s-lu-big.jpg">
-					<div class="builtSite__info">
-						<p class="builtSite__info__copy">Leeds United FC - live video and statistics</p>
-
-					</div>
+					<span class="builtSite__image"
+					      style="background-image: url( 'images/s-lu.jpg' )"
+					      role="presentation"></span>
+					<p class="builtSite__info bg-paper" >Leeds United FC - live video and statistics</p>
 				</a>
 				<a class="builtSite__externalLink"
 				   href="http://www.leedsunited.com/"
@@ -206,7 +202,7 @@
 			function appendBuiltSiteToWrapper () {
 				var eltID = Math.floor(Math.random()*sites.length);
 				var newFirst = sites.splice( eltID, 1 )[0];
-				var className = 'builtSite-' + ( sites.length + 1 );
+				var className = 'builtSiteContainer-' + ( sites.length + 1 );
 
 				sitesWrapper_elt.insertBefore( newFirst, sitesWrapper_elt.firstChild );
 				newFirst.classList.add( className );
@@ -305,7 +301,7 @@
 
 
 
-<!-- build:js scripts/main.18.js -->
+<!-- build:js scripts/main.19.js -->
 	<!-- Compatibility classes -->
 	<script src="scripts/compatibilityClasses/touch.js"></script>
 
